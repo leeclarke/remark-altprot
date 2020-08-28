@@ -1,6 +1,6 @@
 {
   "name": "remark-altprot",
-  "version":"1.0.0",
+  "version": "1.0.1",
   "description": "A remark alternate protocols plugin.",
   "main": "index.js",
   "repository": {
@@ -8,9 +8,13 @@
     "url": "git+https://github.com/leeclarke/remark-altprot"
   },
   "keywords": [
-    "Remark", "plugin", "hyper", "dat","cabal"
+    "Remark",
+    "plugin",
+    "hyper",
+    "dat",
+    "cabal"
   ],
-  "author":"lees2bytes",
+  "author": "lees2bytes",
   "bugs": {
     "url": "https://github.com/leeclarke/remark-altprot/issues"
   },
