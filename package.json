@@ -1,0 +1,29 @@
+{
+  "name": "remark-altprot",
+  "version":"1.0.0",
+  "description": "A remark alternate protocols plugin.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leeclarke/remark-altprot"
+  },
+  "keywords": [
+    "Remark", "plugin", "hyper", "dat","cabal"
+  ],
+  "author":"lees2bytes",
+  "bugs": {
+    "url": "https://github.com/leeclarke/remark-altprot/issues"
+  },
+  "homepage": "https://github.com/leeclarke/remark-altprot#readme",
+  "license": "MIT",
+  "dependencies": {
+    "pump": "^3.0.0",
+    "react": "^16.13.1",
+    "rehype-stringify": "^8.0.0",
+    "remark": "^12.0.0",
+    "remark-rehype": "^7.0.0",
+    "tape": "^5.0.1",
+    "unist-util-is": "^4.0.2",
+    "unist-util-visit": "^2.0.3"
+  }
+}
