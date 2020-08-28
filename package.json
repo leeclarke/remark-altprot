@@ -21,7 +21,7 @@
   "homepage": "https://github.com/leeclarke/remark-altprot#readme",
   "license": "MIT",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test/test.js"
   },
   "dependencies": {
     "pump": "^3.0.0",
@@ -32,5 +32,8 @@
     "tape": "^5.0.1",
     "unist-util-is": "^4.0.2",
     "unist-util-visit": "^2.0.3"
+  },
+  "devDependencies": {
+    "to-vfile": "^6.1.0"
   }
 }
