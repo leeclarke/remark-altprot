@@ -16,6 +16,9 @@
   },
   "homepage": "https://github.com/leeclarke/remark-altprot#readme",
   "license": "MIT",
+  "scripts": {
+    "test": "node test.js"
+  },
   "dependencies": {
     "pump": "^3.0.0",
     "react": "^16.13.1",
