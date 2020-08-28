@@ -47,11 +47,13 @@ function altProt (options) {
         // get any trailing text
         newChildren.push({ type: 'text', value: origVal.substr(pos) })
 
-        children.splice(index, 1)
-        // Merge into current and replace current
-        for (const cn of newChildren) {
-          children.splice(index, 0, cn)
-        }
+        children.splice(index, 1, ...newChildren)
+        // Merge into current
+        // var cnPos = 0
+        // for (const cn of newChildren) {
+        //   children.splice(index + cnPos, 0, cn)
+        //   cnPos++
+        // }
       }
     })
   }
