@@ -1,19 +1,9 @@
 # remark-altprot
 A remark alternate protocols plugin.
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
-[![Size][size-badge]][size]
-[![Sponsors][sponsors-badge]][collective]
-[![Backers][backers-badge]][collective]
-[![Chat][chat-badge]][chat]
-
-[**remark**][remark] plugin to identify alternate protocol links in paragraphs and convert them to links.
+[**remark**](https://github.com/remarkjs/remark) plugin to identify alternate protocol links in paragraphs and convert them to links.
 
 ## Install
-
-[npm][]:
 
 ```sh
 npm install remark-altprot
@@ -55,7 +45,7 @@ In the example we are generating html which will return this result:
 ```
 
 ## Use with remark-react
-There's a trick to using this with [**remark-react**][remark-react] because it uses github sanitize to ensure that generated html is safe. You have to add the protocols you want supported in react to the sanitize feature of remark-react and please, don't set it to false!
+There's a trick to using this with [**remark-react**](https://github.com/remarkjs/remark-react) because it uses github sanitize to ensure that generated html is safe. You have to add the protocols you want supported in react to the sanitize feature of remark-react and please, don't set it to false!
 
 Here's all you need to do:
 ```
