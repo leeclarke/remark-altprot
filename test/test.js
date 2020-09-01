@@ -17,6 +17,10 @@ var pWithAllLinkTypes = 'This link hyper://6946d4631ea3dade5d26367b96afdf8e93be6
 '\nHave you been to cabal public? cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74/ ' +
 'a data link dat://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4'
 
+var pWithAllLinkTypesAndQueryStrings = 'cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74?admin=115e3e33e2ea7b7a4bb4eb0f31344a79fd8e8c0f8b955ea7f6b941d79f9e8a2f ' + 
+'also a hyperlink to hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/README.md ' + 
+'and finally a dat with params dat://778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639/dat_intro.gif'
+
 test('When a hyperlink is present is is converted to a link.', function (t) {
   t.plan(1)
 
@@ -74,7 +78,7 @@ test('When 2 of the same links are in a paragraph both still get converted.', fu
   })
 })
 
-test('When ala 3 types of protocol are in a paragraph all still get converted.', function (t) {
+test('When all 3 types of protocol are in a paragraph all still get converted.', function (t) {
   t.plan(4)
 
   remark().use(markdown).use(altProt).use(remark2rehype).use(html).process(pWithAllLinkTypes, function (err, file) {
@@ -99,5 +103,18 @@ test('Test reading markdown from a file like the example in readme.', function (
     t.true(outPutString.indexOf('<a href="hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/">hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/</a>') > -1, 'An html link for hyper should be present')
     t.true(outPutString.indexOf('<a href="cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74/">cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74/</a>') > -1, 'An html link for cabal should be present')
     t.true(outPutString.indexOf('<a href="dat://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4">dat://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4</a>') > -1, 'An html link for dat should be present')
+  })
+})
+
+test('Test that all link types also work if they have some sort of query param or path', function (t) {
+  t.plan(3)
+
+  remark().use(markdown).use(altProt).use(remark2rehype).use(html).process(pWithAllLinkTypesAndQueryStrings, function (err, file) {
+    if (err) console.error(err)
+    var outPutString = String(file)
+    console.log(outPutString)
+    t.true(outPutString.indexOf('<a href="cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74?admin=115e3e33e2ea7b7a4bb4eb0f31344a79fd8e8c0f8b955ea7f6b941d79f9e8a2f">cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74?admin=115e3e33e2ea7b7a4bb4eb0f31344a79fd8e8c0f8b955ea7f6b941d79f9e8a2f</a>') > -1, 'An html link for cabal should be present with query string included.')
+    t.true(outPutString.indexOf('<a href="hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/README.md">hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/README.md</a>') > -1, 'An html link for a hyper link to a .md file should be present')
+    t.true(outPutString.indexOf('<a href="dat://778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639/dat_intro.gif">dat://778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639/dat_intro.gif</a>') > -1, 'An html link for dat should be present with file name')
   })
 })

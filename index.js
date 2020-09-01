@@ -30,9 +30,8 @@ function altProt (options) {
     var children = node.children
     children.forEach(function (child, index) {
       if (is(child, 'text')) {
-        // TODO: figure out why its skipping other protocols
         var protListStr = protocols.join('|')
-        var ptrn = new RegExp('(' + protListStr + ')?://[-a-zA-Z0-9]{64}/*', 'g')
+        var ptrn = new RegExp('(' + protListStr + ')?://[-a-zA-Z0-9]{64}\\b([-a-zA-Z0-9@:%_+.~#?&//=]*)', 'g')
         var matches = child.value.matchAll(ptrn)
         var origVal = child.value
         var pos = 0
