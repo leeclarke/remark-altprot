@@ -5,7 +5,7 @@ var is = require('unist-util-is')
 
 module.exports = altProt
 
-const protocols = ['hyper', 'dat', 'cabal']
+const protocols = ['hyper', 'dat', 'cabal', 'hypergraph', 'hypermerge']
 var protocolsUsed = protocols
 
 function altProt (options) {
@@ -31,7 +31,7 @@ function altProt (options) {
     children.forEach(function (child, index) {
       if (is(child, 'text')) {
         var protListStr = protocols.join('|')
-        var ptrn = new RegExp('(' + protListStr + ')?://[-a-zA-Z0-9]{64}\\b([-a-zA-Z0-9@:%_+.~#?&//=]*)', 'g')
+        var ptrn = new RegExp('(' + protListStr + '){1}://[-a-zA-Z0-9]{64}\\b([-a-zA-Z0-9@:%_+.~#?&//=]*)', 'g')
         var matches = child.value.matchAll(ptrn)
         var origVal = child.value
         var pos = 0

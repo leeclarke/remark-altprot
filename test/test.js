@@ -93,7 +93,7 @@ test('When all 3 types of protocol are in a paragraph all still get converted.',
 })
 
 test('Test reading markdown from a file like the example in readme.', function (t) {
-  t.plan(4)
+  t.plan(8)
 
   remark().use(markdown).use(altProt).use(remark2rehype).use(html).process(vfile.readSync('test/example.md'), function (err, file) {
     if (err) console.error(err)
@@ -103,6 +103,10 @@ test('Test reading markdown from a file like the example in readme.', function (
     t.true(outPutString.indexOf('<a href="hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/">hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/</a>') > -1, 'An html link for hyper should be present')
     t.true(outPutString.indexOf('<a href="cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74/">cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74/</a>') > -1, 'An html link for cabal should be present')
     t.true(outPutString.indexOf('<a href="dat://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4">dat://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4</a>') > -1, 'An html link for dat should be present')
+    t.true(outPutString.indexOf('<a href="hypergraph://620794a6b46d1235f245acdad2cc9e5e4f3e63f2396cc6f8655e1a30dfa09669">hypergraph://620794a6b46d1235f245acdad2cc9e5e4f3e63f2396cc6f8655e1a30dfa09669</a>') > -1, 'An html link for hypergraph should be present with file name')
+    t.true(outPutString.indexOf('<a href="hypermerge://GqEuyCPZ8fKPaJNobgRT3QFnRVHBcsK86VzxBkU1Rnnw?pushpinContentType=board">hypermerge://GqEuyCPZ8fKPaJNobgRT3QFnRVHBcsK86VzxBkU1Rnnw?pushpinContentType=board</a>') > -1, 'An html link for hypermerge should be present with file name')
+    t.false(outPutString.indexOf('<a href="blah://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74">blah://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74</a>') > -1, 'An html link for blah should NOT be present with file name')
+    t.true(outPutString.indexOf(' blah://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74 ') > -1, 'The fake link should be present and unmanipulated')
   })
 })
 
