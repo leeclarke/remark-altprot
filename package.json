@@ -1,6 +1,6 @@
 {
   "name": "remark-altprot",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A remark alternate protocols plugin.",
   "main": "index.js",
   "repository": {
