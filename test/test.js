@@ -7,7 +7,7 @@ var remark2rehype = require('remark-rehype')
 var vfile = require('to-vfile')
 
 var pWithHyperLink = 'This link hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/ blah blah.  Some more words then a 2nd '
-var twoHyperLinksInParagraph = 'This link hyper://7dc9c5dac58780ecbfbae14db585334c28ef98aba928d31cbf9b50f8dfa5cc86/ blah blah.  Some more words then a 2nd ' + 
+var twoHyperLinksInParagraph = 'This link hyper://7dc9c5dac58780ecbfbae14db585334c28ef98aba928d31cbf9b50f8dfa5cc86/ blah blah.  Some more words then a 2nd ' +
 'link just for trouble hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/ \n'
 var paragraphHttpLink = 'Also a reg https://github.com/unifiedjs/unified#processorparser/ '
 var paragraphHttpLinkMarkup = 'Also a markup [link](https://github.com/unifiedjs/unified#processorparser) '
@@ -17,8 +17,8 @@ var pWithAllLinkTypes = 'This link hyper://6946d4631ea3dade5d26367b96afdf8e93be6
 '\nHave you been to cabal public? cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74/ ' +
 'a data link dat://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4'
 
-var pWithAllLinkTypesAndQueryStrings = 'cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74?admin=115e3e33e2ea7b7a4bb4eb0f31344a79fd8e8c0f8b955ea7f6b941d79f9e8a2f ' + 
-'also a hyperlink to hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/README.md ' + 
+var pWithAllLinkTypesAndQueryStrings = 'cabal://1eef9ad64e284691b7c6f6310e39204b5f92765e36102046caaa6a7ff8c02d74?admin=115e3e33e2ea7b7a4bb4eb0f31344a79fd8e8c0f8b955ea7f6b941d79f9e8a2f ' +
+'also a hyperlink to hyper://6946d4631ea3dade5d26367b96afdf8e93be638349c536e0bd446393c78a61a4/README.md ' +
 'and finally a dat with params dat://778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639/dat_intro.gif'
 
 test('When a hyperlink is present is is converted to a link.', function (t) {

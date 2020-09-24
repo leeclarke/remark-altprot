@@ -53,7 +53,7 @@ var merge = require('deepmerge')
 var gh = require('hast-util-sanitize/lib/github')
 
 const altProtSanitize = {
-  sanitize: merge(gh, { protocols: { href: ['hyper', 'dat', 'cabal'] } })
+  sanitize: merge(gh, { protocols: { href: ['hyper', 'dat', 'cabal', 'hypergraph', 'hypermerge'] } })
 }
 
 remark().use(altProt).use(remarkReact, altProtSanitize).use(remarkEmoji).processSync(message.content).result

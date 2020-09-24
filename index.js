@@ -5,6 +5,7 @@ var is = require('unist-util-is')
 
 module.exports = altProt
 
+// TODO: split out divergent regex patterns when the next exception comes along and make this a map
 const protocols = ['hyper', 'dat', 'cabal', 'hypergraph', 'hypermerge']
 var protocolsUsed = protocols
 
@@ -31,7 +32,9 @@ function altProt (options) {
     children.forEach(function (child, index) {
       if (is(child, 'text')) {
         var protListStr = protocols.join('|')
-        var ptrn = new RegExp('(' + protListStr + '){1}://[-a-zA-Z0-9]{64}\\b([-a-zA-Z0-9@:%_+.~#?&//=]*)', 'g')
+        var mergePtrn = (protocols.includes('hypermerge')) ? '|(hypermerge://[-a-zA-Z0-9]*\\b([-a-zA-Z0-9@:%_+.~#?&//=]*))' : ''
+        var ptrn = new RegExp('((' + protListStr + '){1}://[-a-zA-Z0-9]{64}\\b([-a-zA-Z0-9@:%_+.~#?&//=]*))' + mergePtrn, 'g')
+
         var matches = child.value.matchAll(ptrn)
         var origVal = child.value
         var pos = 0
